@@ -24,7 +24,7 @@ def main():
     dt = 0
 
     # Initialize player
-    Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # Main loop
     while True:
