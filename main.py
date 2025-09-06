@@ -15,6 +15,10 @@ def main():
     # Initialize pygame
     pygame.init()
 
+    # Groups
+    updatables = pygame.sprite.Group()
+    drawables = pygame.sprite.Group()
+    Player.containers = (updatables, drawables)
 
     # Set up the display
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -33,8 +37,9 @@ def main():
                 return
             
         screen.fill(color="black")
-        player.draw(screen)
-        player.update(dt)
+        for drawable in drawables:
+            drawable.draw(screen)
+        updatables.update(dt)
         pygame.display.flip()
 
         # Loop FPS control
