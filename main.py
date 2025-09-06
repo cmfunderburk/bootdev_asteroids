@@ -49,6 +49,11 @@ def main():
         updatables.update(dt)
         pygame.display.flip()
 
+        for asteroid in asteroids:
+            if player.check_collision(asteroid):
+                print("Game over!")
+                return
+
         # Loop FPS control
         dt = clock.tick(60) / 1000
 
