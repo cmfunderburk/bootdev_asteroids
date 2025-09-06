@@ -5,6 +5,8 @@ import pygame
 from constants import *
 from circleshape import *
 from player import *
+from asteroids import *
+from asteroidfield import *
 
 def main():
     # Print welcome messages
@@ -18,7 +20,11 @@ def main():
     # Groups
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+
     Player.containers = (updatables, drawables)
+    Asteroid.containers = (asteroids, updatables, drawables)
+    AsteroidField.containers = (updatables)
 
     # Set up the display
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -29,6 +35,7 @@ def main():
 
     # Initialize player
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
 
     # Main loop
     while True:
